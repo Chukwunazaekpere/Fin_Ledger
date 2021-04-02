@@ -5,9 +5,9 @@ export interface IAccountShema {
     id: number,
     user: string,
     balance: number,
-    transfer: number,
+    transactionId: number,
     availableWithdrawal: number,
-    createdAt: number
+    createdAt: string
 };
 
 export interface IAccountModelInstance extends Model<IAccountShema>, IAccountShema{
@@ -32,7 +32,7 @@ export const AccountFactory = (sequelize: Sequelize) => {
             type: DataTypes.INTEGER,
             allownull: false
         },
-        transfer: {
+        transactionId: {
             type: DataTypes.INTEGER,
             allownull: false
         },

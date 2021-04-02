@@ -5,6 +5,7 @@ const Accounts = database.Accounts;
 import { TransactionRequestType } from "../requestTypes";
 
 
+
 const accountsValidator = async (requestBody: TransactionRequestType) => {
     const accountsSchema = Joi.object({
         phone: Joi.string().max(11).min(11).required(),
