@@ -4,7 +4,7 @@ import models from '../../models';
 const Deposit = models.Deposits;
 
 
-const depositController = async (req: Request, res: Response) => {
+const depositController = async (req: Request, res: Response): Promise<Response> => {
     const data = req.body;
 
     const newDeposit = new Deposit({
@@ -18,13 +18,13 @@ const depositController = async (req: Request, res: Response) => {
         }
 
         const saveDeposit = await newDeposit.save();
-        res.status(201).json({
+        return res.status(201).json({
             message: 'Deposit was successful',
             status: "Success",
             data: saveDeposit
         })
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: `Deposit was unsuccessful.`,
             status: "Error",
             data: `${error}`

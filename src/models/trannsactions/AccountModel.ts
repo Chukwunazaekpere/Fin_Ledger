@@ -52,6 +52,7 @@ export const AccountFactory = (sequelize: Sequelize) => {
 };
 
 
-const getBalance = async function(this: IAccountShema){
-    return this.balance;
+    const getBalance = async function(this: IAccountShema){
+        return this.balance;
+
 };

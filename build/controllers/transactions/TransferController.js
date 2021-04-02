@@ -12,14 +12,14 @@ const transferController = async (req, res) => {
             throw message;
         }
         const saveInvestment = await newInvestment.save();
-        res.status(201).json({
+        return res.status(201).json({
             message: 'Investment was successful',
             status: "Success",
             data: saveInvestment
         });
     }
     catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: `Investment was unsuccessful.`,
             status: "Error",
             data: `${error}`

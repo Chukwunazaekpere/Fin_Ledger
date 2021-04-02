@@ -5,9 +5,10 @@ const Users = database.Users;
 import loginValidator  from "../../validators/authentication/LoginValidator";
 
 import bcrypt from "bcrypt";
+import { QueryResult } from "pg";
 
 
-const logoutController = async (req: Request, res: Response) => {
+const logoutController = async (req: Request, res: Response): Promise<Response> => {
     const validatedLoginRequest = await loginValidator(req.body)    
 
     if(typeof(validatedLoginRequest) == "string" ){
@@ -18,7 +19,7 @@ const logoutController = async (req: Request, res: Response) => {
     }
     const { email } = validatedLoginRequest;
     try {
-        const user = await Users.findOne({ email });
+        const user: QueryResult = await Users.findOne({ email });
         if(user){
             const similarPassword = await bcrypt.compare(req.body.password, user.password);
             if(similarPassword){

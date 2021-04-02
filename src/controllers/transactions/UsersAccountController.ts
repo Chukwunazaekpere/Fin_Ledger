@@ -1,19 +1,20 @@
 import { Request, Response } from 'express';
+import { QueryResult } from 'pg';
 import models from '../../models';
 const Account = models.Account;
 
 
-const usersAccountController = async (req:Request, res: Response) => {
+const usersAccountController = async (req:Request, res: Response): Promise<Response> => {
     try {
-        const users = await Account.find();        
+        const users: QueryResult = await Account.find();        
 
-        res.status(200).json({
+        return res.status(200).json({
             message: 'All users.',
             status: 'Successful',
             data: users
         });
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: `${error}`,
             status: 'Error',
             data: null

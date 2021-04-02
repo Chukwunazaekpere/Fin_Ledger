@@ -4,7 +4,7 @@ import models from '../../models';
 const Transfer = models.Transfers;
 
 
-const transferController = async (req: Request, res: Response) => {
+const transferController = async (req: Request, res: Response): Promise<Response> => {
     const data = req.body;
 
     const newInvestment = new Transfer({
@@ -18,13 +18,13 @@ const transferController = async (req: Request, res: Response) => {
         }
 
         const saveInvestment = await newInvestment.save();
-        res.status(201).json({
+        return res.status(201).json({
             message: 'Investment was successful',
             status: "Success",
             data: saveInvestment
         })
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: `Investment was unsuccessful.`,
             status: "Error",
             data: `${error}`

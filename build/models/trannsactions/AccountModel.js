@@ -16,7 +16,7 @@ export const AccountFactory = (sequelize) => {
             type: DataTypes.INTEGER,
             allownull: false
         },
-        transfer: {
+        transactionId: {
             type: DataTypes.INTEGER,
             allownull: false
         },

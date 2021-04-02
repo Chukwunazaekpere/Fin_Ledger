@@ -1,5 +1,5 @@
 import Joi from "joi";
-import database from "../../models/index.js";
+import database from "../../models";
 const Account = database.Account;
 const fundsDepositValidator = async (requestBody) => {
     const fundsTransferSchema = Joi.object({

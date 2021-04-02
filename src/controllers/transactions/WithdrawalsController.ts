@@ -4,7 +4,7 @@ import models from '../../models';
 const Withdrawal = models.Withdrawals;
 
 
-const withdrawalController = async (req: Request, res: Response) => {
+const withdrawalController = async (req: Request, res: Response): Promise<Response> => {
     const data = req.body;
 
     const newWithdrawal = new Withdrawal({
@@ -18,13 +18,13 @@ const withdrawalController = async (req: Request, res: Response) => {
         }
 
         const saveDeposit = await newWithdrawal.save();
-        res.status(201).json({
+        return res.status(201).json({
             message: 'Withdrawal was successful.',
             status: "Success",
             data: saveDeposit
         })
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: `Withdrawal was unsuccessful.`,
             status: "Error",
             data: `${error}`

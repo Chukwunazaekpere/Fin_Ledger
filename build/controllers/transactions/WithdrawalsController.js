@@ -12,14 +12,14 @@ const withdrawalController = async (req, res) => {
             throw message;
         }
         const saveDeposit = await newWithdrawal.save();
-        res.status(201).json({
+        return res.status(201).json({
             message: 'Withdrawal was successful.',
             status: "Success",
             data: saveDeposit
         });
     }
     catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             message: `Withdrawal was unsuccessful.`,
             status: "Error",
             data: `${error}`

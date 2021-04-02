@@ -7,11 +7,13 @@ import loginValidator  from "../../validators/authentication/LoginValidator";
 import bcrypt from "bcrypt";
 
 import dotenv from "dotenv";
+import { QueryResult } from "pg";
+import { IUsersModelInstance, IUsersSchema } from "../../models/authentication/Users.js";
 dotenv.config({ path: "../../../src/config/config.env" })
 
 
 
-const loginController = async (req: Request, res: Response) => {
+const loginController = async (req: Request, res: Response): Promise<Response> => {
     const validatedLoginRequest = await loginValidator(req.body)    
 
     if(typeof(validatedLoginRequest) == "string" ){
@@ -22,7 +24,7 @@ const loginController = async (req: Request, res: Response) => {
     }
     const { email } = validatedLoginRequest;
     try {
-        const user = await Users.findOne({ email });
+        const user: IUsersSchema = await Users.findOne<IUsersSchema>({ email });
         if(user){
             const similarPassword = await bcrypt.compare(req.body.password, user.password);
             if(similarPassword){

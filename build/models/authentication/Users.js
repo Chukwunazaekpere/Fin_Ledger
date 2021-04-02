@@ -1,5 +1,4 @@
 import { DataTypes } from 'sequelize';
-let User;
 export const UserFactory = (sequelize) => {
     const attributes = {
         id: {
@@ -36,6 +35,6 @@ export const UserFactory = (sequelize) => {
             default: new Date()
         },
     };
-    User = sequelize.define("User", attributes);
+    const User = sequelize.define("User", attributes);
+    return User;
 };
-export default User;

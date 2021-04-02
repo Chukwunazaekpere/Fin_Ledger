@@ -8,6 +8,7 @@ export interface IUsersSchema {
     lastname: string,
     email: string,
     phone: string,
+    password: string
 }
 
 export interface IUsersModelInstance extends Model<IUsersSchema>, IUsersSchema {
@@ -15,7 +16,6 @@ export interface IUsersModelInstance extends Model<IUsersSchema>, IUsersSchema {
     createAccount(): void
 }
 
-let User;
 export const UserFactory = (sequelize: Sequelize) => {
     const attributes = {
         id: {
@@ -53,8 +53,7 @@ export const UserFactory = (sequelize: Sequelize) => {
         },
     };
     
-    User = sequelize.define<IUsersModelInstance, IUsersSchema>("User", attributes);
-    
+    const User = sequelize.define<IUsersModelInstance, IUsersSchema>("User", attributes);
+    return User;
 };
   
-export default User;
