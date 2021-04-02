@@ -20,10 +20,10 @@ interface DbInterface {
 
 
 const models = {
-    Account: 
-    Withdrawals: 
-    Deposits: 
-    Users: 
+    Account: "",
+    Withdrawals: "",
+    Deposits: "",
+    Users: "",
     Transfers: TransferFactory(Sequelize)
 }
 

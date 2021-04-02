@@ -2,8 +2,10 @@ import Joi from "joi";
 import database from "../../models/index.js";
 const Users = database.Users;
 
+import {UserRequestType} from '../requestTypes';
 
-const registerValidator = async (requestBody: object) => {
+
+const registerValidator = async (requestBody: UserRequestType) => {
     // Validate registration fields
     const registerSchema = Joi.object({
         firstname: Joi.string().min(3).max(25).required(),

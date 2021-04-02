@@ -2,7 +2,10 @@ import Joi from "joi";
 import database from "../../models/index.js";
 const Account = database.Account
 
-const fundsDepositValidator = async (requestBody: object) => {
+import { TransactionRequestType } from "../requestTypes";
+
+
+const fundsDepositValidator = async (requestBody: TransactionRequestType) => {
     const fundsTransferSchema = Joi.object({
         accountName: Joi.string().min(4).required(),
         accountNumber: Joi.number().min(11).max(11).required(),

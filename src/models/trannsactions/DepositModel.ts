@@ -70,4 +70,3 @@ const increaseBalance = async function(this: IDepositSchema) {
     }
 
 }
-

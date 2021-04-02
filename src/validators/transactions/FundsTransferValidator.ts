@@ -1,6 +1,8 @@
-import Joi from "@hapi/joi";
+import Joi from "joi";
+import { TransactionRequestType } from "../requestTypes";
 
-const fundsTransferValidator = async (requestBody) => {
+
+const fundsTransferValidator = async (requestBody: TransactionRequestType) => {
     const fundsTransferSchema = Joi.object({
         phone: Joi.string().max(11).min(11).required(),
         receipientName: Joi.string().min(4).required(),

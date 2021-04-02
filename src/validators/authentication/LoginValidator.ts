@@ -2,8 +2,10 @@ import Joi from "joi";
 import database from "../../models/index.js";
 const Users = database.Users;
 
+import {UserRequestType} from '../requestTypes';
 
-const loginValidator = async (requestBody: object) => {
+
+const loginValidator = async (requestBody: UserRequestType) => {
     const loginSchema = Joi.object({
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required()

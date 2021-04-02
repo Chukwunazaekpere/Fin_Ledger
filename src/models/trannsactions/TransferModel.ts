@@ -74,4 +74,3 @@ const recordTransfer = async function(this: ITransferSchema) {
     }
 
 }
-

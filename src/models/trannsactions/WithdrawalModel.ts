@@ -65,4 +65,3 @@ const decreaseBalance = async function(this: IWithdrawalSchema) {
     }
 
 }
-

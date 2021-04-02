@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import controllers from '../controllers';
-var router = Router();
+const router = Router();
 router.post("/deposit", controllers.depositController);
 router.get("/account", controllers.accountController);
 router.post("/withdrawal", controllers.withdrawalController);

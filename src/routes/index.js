@@ -1,5 +1,5 @@
 import { Router } from 'express';
-var appRouter = Router();
+const appRouter = Router();
 //========================= imports =====================
 import transactionsRouter from './transactions';
 import authRouter from './authentication';

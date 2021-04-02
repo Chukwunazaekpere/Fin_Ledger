@@ -1,10 +1,11 @@
-import Joi from "@hapi/joi";
+import Joi from "joi";
 import database from "../models/index.js";
 const Accounts = database.Accounts;
 
+import { TransactionRequestType } from "../requestTypes";
 
 
-const accountsValidator = async (requestBody) => {
+const accountsValidator = async (requestBody: TransactionRequestType) => {
     const accountsSchema = Joi.object({
         phone: Joi.string().max(11).min(11).required(),
         accountType: Joi.string().min(4).required(),
